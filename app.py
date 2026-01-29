@@ -6,6 +6,26 @@ from ai_service import call_ai_update
 # --- Cấu hình Trang ---
 st.set_page_config(layout="wide", page_title="Mermaid AI Visualizer", page_icon="🧜‍♀️")
 
+st.markdown(
+    """
+    <head>
+        <link rel="manifest" href="https://raw.githubusercontent.com/USERNAME_CUA_BAN/TEN_REPO_CUA_BAN/main/manifest.json">
+        
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="theme-color" content="#0e1117">
+    </head>
+    <style>
+        /* Ẩn cái menu hamburger của Streamlit đi cho giống App thật */
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        header {visibility: hidden;}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # --- Sidebar: Cấu hình ---
 with st.sidebar:
     st.header("🤖 Cấu Hình OpenRouter")
