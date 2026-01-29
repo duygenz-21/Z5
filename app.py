@@ -9,7 +9,7 @@ st.set_page_config(layout="wide", page_title="Mermaid AI Visualizer", page_icon=
 st.markdown(
     """
     <head>
-        <link rel="manifest" href="https://raw.githubusercontent.com/USERNAME_CUA_BAN/TEN_REPO_CUA_BAN/main/manifest.json">
+        <link rel="manifest" href="https://raw.githubusercontent.com/duygenz-21/Z5/main/manifest.json">
         
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="mobile-web-app-capable" content="yes">
