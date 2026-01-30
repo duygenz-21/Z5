@@ -37,7 +37,7 @@ with st.sidebar:
     
     with st.expander("🔑 Cấu hình AI", expanded=True):
         api_key = st.text_input("API Key", type="password", placeholder="sk-...")
-        model_name = st.selectbox("Model", ["openai/gpt-3.5-turbo", "openai/gpt-4-turbo", "anthropic/claude-3-haiku"])
+        model_name = st.selectbox("Model", ["deepseek/deepseek-v3.2", "openai/gpt-oss-120b", "xiaomi/mimo-v2-flash", "anthropic/claude-3-haiku"])
         temperature = st.slider("Độ sáng tạo", 0.0, 2.0, 0.7)
     
     st.divider()
