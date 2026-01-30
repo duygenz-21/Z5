@@ -113,21 +113,25 @@ st.divider()
 
 # --- Chat Control ---
 st.markdown("### ✏️ Chỉnh sửa với AI")
-col_input, col_btn = st.columns([4, 1])
 
-with col_input:
-    # THAY ĐỔI 1: Thêm key="user_query" vào đây
-    user_request = st.text_input(
-        "Bạn muốn sửa gì?", 
-        placeholder="Ví dụ: Đổi màu node Bắt đầu thành màu xanh...",
-        key="user_query" 
-    )
+# Bắt đầu Form, clear_on_submit=True sẽ tự động xóa chữ sau khi bấm nút
+with st.form(key="chat_form", clear_on_submit=True):
+    col_input, col_btn = st.columns([4, 1])
 
-with col_btn:
-    st.write("") 
-    st.write("")
-    run_btn = st.button("🚀 Gửi", type="primary")
+    with col_input:
+        # Bỏ key="user_query" ở đây để tránh xung đột quản lý state thủ công
+        user_request = st.text_input(
+            "Bạn muốn sửa gì?", 
+            placeholder="Ví dụ: Đổi màu node Bắt đầu thành màu xanh..."
+        )
 
+    with col_btn:
+        st.write("") 
+        st.write("")
+        # Đổi st.button thành st.form_submit_button
+        run_btn = st.form_submit_button("🚀 Gửi", type="primary")
+
+# Logic xử lý sau khi nhấn nút (Giữ nguyên logic cũ của bạn)
 if run_btn and user_request:
     if not api_key:
         st.toast("Vui lòng nhập API Key trong cài đặt!", icon="⚠️")
@@ -144,10 +148,6 @@ if run_btn and user_request:
                 st.session_state.mermaid_code = new_code
                 db.save_history(new_code)
                 st.toast("Cập nhật thành công!", icon="✨")
-                
-                # THAY ĐỔI 2: Xóa nội dung trong ô input thông qua key
-                st.session_state.user_query = "" 
-                
                 st.rerun()
 
 # --- Developer Mode ---
