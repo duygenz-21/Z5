@@ -11,7 +11,7 @@ st.markdown(
         /* Ẩn menu mặc định để giống App */
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
-        header {visibility: hidden;}
+        header {visibility: hidden;}//
         
         /* Tùy chỉnh khung hiển thị biểu đồ cho đẹp hơn */
         .mermaid-container {
