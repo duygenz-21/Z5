@@ -116,12 +116,17 @@ st.markdown("### ✏️ Chỉnh sửa với AI")
 col_input, col_btn = st.columns([4, 1])
 
 with col_input:
-    user_request = st.text_input("Bạn muốn sửa gì?", placeholder="Ví dụ: Đổi màu node Bắt đầu thành màu xanh...")
+    # THAY ĐỔI 1: Thêm key="user_query" vào đây
+    user_request = st.text_input(
+        "Bạn muốn sửa gì?", 
+        placeholder="Ví dụ: Đổi màu node Bắt đầu thành màu xanh...",
+        key="user_query" 
+    )
 
 with col_btn:
     st.write("") 
     st.write("")
-    run_btn = st.button("🚀 Gửi", type="primary") #
+    run_btn = st.button("🚀 Gửi", type="primary")
 
 if run_btn and user_request:
     if not api_key:
@@ -131,14 +136,18 @@ if run_btn and user_request:
             new_code = call_ai_update(
                 st.session_state.mermaid_code,
                 user_request,
-                api_key, model_name, temperature, 1.0 #
+                api_key, model_name, temperature, 1.0
             )
             if new_code.startswith("Error"):
                 st.error(new_code)
             else:
                 st.session_state.mermaid_code = new_code
-                db.save_history(new_code) # Lưu bản sửa mới vào lịch sử
+                db.save_history(new_code)
                 st.toast("Cập nhật thành công!", icon="✨")
+                
+                # THAY ĐỔI 2: Xóa nội dung trong ô input thông qua key
+                st.session_state.user_query = "" 
+                
                 st.rerun()
 
 # --- Developer Mode ---
